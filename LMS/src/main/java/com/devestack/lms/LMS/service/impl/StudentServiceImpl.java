@@ -27,17 +27,23 @@ public class StudentServiceImpl implements StudentService {
 //        List<Student> all = studentRepo.findAll();
 //        List<ResponseStudentDTO> responseStudentDTOList = new ArrayList<>();
 //        for (Student student : all) {
-//            responseStudentDTOList.add(toAllStudent(student));
+//            responseStudentDTOList.add(toResponseStudentDto(student));
 //        }
 //        return responseStudentDTOList;
 
-       // return studentRepo.findAll().stream().map(e->toAllStudent(e)).toList();
+       // return studentRepo.findAll().stream().map(e->toResponseStudentDto(e)).toList();
 
-        return studentRepo.findAll().stream().map(this::toAllStudent).toList();
+        return studentRepo.findAll().stream().map(this::toResponseStudentDto).toList();
 
     }
 
-    private ResponseStudentDTO toAllStudent(Student student){
+    @Override
+    public ResponseStudentDTO findById(String id) {
+        Student student = studentRepo.findById(id).orElseThrow(() -> new RuntimeException("Student not found"));
+        return toResponseStudentDto(student);
+    }
+
+    private ResponseStudentDTO toResponseStudentDto(Student student){
         if(student == null) return null;
         return ResponseStudentDTO.builder()
                 .id(student.getId())

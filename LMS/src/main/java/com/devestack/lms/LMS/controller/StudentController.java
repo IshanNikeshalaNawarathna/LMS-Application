@@ -42,5 +42,17 @@ public class StudentController {
                 HttpStatus.OK
         );
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<StandardResponseDTO> findStudentById(@PathVariable String id){
+        return new ResponseEntity<>(
+                new StandardResponseDTO(
+                        200,
+                        "Student Found",
+                        studentService.findById(id)
+
+                ),
+                HttpStatus.OK
+        );
+    }
 
 }
