@@ -54,5 +54,19 @@ public class StudentController {
                 HttpStatus.OK
         );
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<StandardResponseDTO> deleteStudent(@PathVariable String id){
+        studentService.deleteStudent(id);
+        return new ResponseEntity<>(
+                new StandardResponseDTO(
+                        204,
+                        "Deleted Student",
+                        null
+
+
+                ),
+                HttpStatus.OK
+        );
+    }
 
 }

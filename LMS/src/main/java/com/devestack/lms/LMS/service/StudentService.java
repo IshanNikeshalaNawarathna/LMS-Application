@@ -9,4 +9,5 @@ public interface StudentService {
     public void createStudent(RequestStudentDTO requestStudentDTO);
     public List<ResponseStudentDTO> allStudents();
     public ResponseStudentDTO findById(String id);
+    public void deleteStudent(String id);
 }
