@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class StandardResponseDTO {
-    private String code;
+    private int code;
     private String message;
     private Object data;
 
